@@ -20,7 +20,7 @@ def nearest_neighbor(coordinates):
     start = random.choice(coordinates)
   
     # create a list of visited cities
-    visited = [start]
+    path = [start]
     total_distance = 0.0
   
     # browse the remaining cities and add the nearest city
@@ -31,23 +31,23 @@ def nearest_neighbor(coordinates):
         for j in range(len(coordinates)):
             coord = coordinates[j]
             #if the coord element has not been visited yet, find the distance between it and the last element visited
-            if coord not in visited:
-                d = ((coord[0] - visited[-1][0]) ** 2 + (coord[1] - visited[-1][1]) ** 2) ** 0.5
+            if coord not in path:
+                d = ((coord[0] - path[-1][0]) ** 2 + (coord[1] - path[-1][1]) ** 2) ** 0.5
                 if d < nearest_distance:
                     nearest_city = coord
                     nearest_distance = d
-        visited.append(nearest_city)
+        path.append(nearest_city)
         total_distance += nearest_distance
   
     # add the distance from the last visited city to the starting point
-    visited.append(start)
-    total_distance += ((visited[-1][0] - visited[0][0]) ** 2 + (visited[-1][1] - visited[0][1]) ** 2) ** 0.5
+    path.append(start)
+    total_distance += ((path[-1][0] - path[0][0]) ** 2 + (path[-1][1] - path[0][1]) ** 2) ** 0.5
 
     # graph
     x = [coord[0] for coord in coordinates]
     y = [coord[1] for coord in coordinates]
-    path_x = [coord[0] for coord in visited]
-    path_y = [coord[1] for coord in visited]
+    path_x = [coord[0] for coord in path]
+    path_y = [coord[1] for coord in path]
     plt.scatter(x, y, color="red")
     plt.plot(path_x, path_y, color="blue")
     plt.title('Nearest Neighbor')
