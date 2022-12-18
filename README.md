@@ -1,6 +1,6 @@
 # TSP
-Úkoly z geoinformatiky 2022/2023
-Vstupní soubor:
-  textový soubor se souřadnicemi x a y
+Problém obchodního cestujícího  (Travelling Salesman Problem) řešný metodou Nearest Neighbor a metodou Best Insertion.
+## Vstupní soubor:
+  textový soubor s kartézskými souřadnicemi x a y v metrech, kde řádek představuje jeden bod.
   
 V
